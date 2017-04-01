@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script type="text/javascript" src="Snap.svg/Snap.svg-0.5.1/dist/snap.svg-min.js">
+  </script>
+</head>
+<body>
+<h1>holi</h1>
+<p>
+  
+</p>
+<script type="text/javascript">
+	var s= Snap(300,300)
+	var circle= s.circle(100,100,50)
+	circle.attr({
+		fill: "green",
+		stroke: "yellow",
+		strokeWidth: 5
+	});
+
+	function aLoop(r){
+		var newR= r===50 ? 100 : 50
+		circle.animate({r:r},2000,function(){
+			aLoop(newR);
+		})
+	}
+	aLoop(50)
+</script>
+</body>
+</html>
