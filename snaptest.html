@@ -8,25 +8,84 @@
 </head>
 <body>
 <h1>holi</h1>
-<p>
-  
-</p>
+
+<svg id="maymay" height="300" width="720"> </svg>
 <script type="text/javascript">
-	var s= Snap(300,300)
-	var circle= s.circle(100,100,50)
+	var s= Snap("#maymay")
+	var circle= s.circle(0,300,50)
 	circle.attr({
 		fill: "green",
 		stroke: "yellow",
 		strokeWidth: 5
 	});
 
-	function aLoop(r){
-		var newR= r===50 ? 100 : 50
-		circle.animate({r:r},2000,function(){
+	var circle2= s.circle(0,300,50)
+	circle2.attr({
+		fill: "green",
+		stroke: "yellow",
+		strokeWidth: 5
+	});
+
+
+
+	  var rect = s.rect(0, 300, 100, 100)
+	  var x=0
+	  var y=300
+	  var a=400
+	  var b=0
+
+	  function recLoop(){
+	  			if(y==0){ // esta en la cima
+	  				x=0
+	  				y=300
+	  				
+	  			}else{ //suba
+	  				x=720
+	  				y=0
+	  				
+	  			}
+
+		  		rect.animate({ x:x, y:y }, 2000, function(){ recLoop();})
+	  		  		
+		  
+		  	//recLoop(xx-1,yy-1)
+	  }
+	 
+
+	  recLoop()
+	 
+
+/*
+	var block = s.rect(100, 100, 100, 100);
+
+	function infRotate( el ) {
+		    el.transform('r0,150,150'); // some kind of transform reset, or removing the previous completed transform maybe needed.
+		    el.animate({ transform: 'r360,150,150' }, 2000, mina.linear, infRotate.bind( null, el));
+		};
+
+	infRotate( block );
+	*/
+
+	function aLoop(){
+		/*var newR= r===50 ? 100 : 50
+		circle.animate({r:r,x:x,y:y},1000,function(){
 			aLoop(newR);
-		})
+		})*/
+		if(a==720){
+			console.log(a+" b>"+b)
+			a=-400
+			b=320
+			//circle.animate({ transform:'translate('+-400+','+-700+')'}, 1, null);	
+		}
+		a++
+		b++
+		circle.animate({ transform:'translate('+a+','+-b+')'}, 3, aLoop);	
+		
+
 	}
-	aLoop(50)
+
+	aLoop()
+	
 </script>
 </body>
 </html>
